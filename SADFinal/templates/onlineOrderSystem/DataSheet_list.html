@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+   <h1>規格單資料庫</h1>
+   {% if datasheet_list %}
+   <ul>
+     {% for datasheet in datasheet_list %}
+       <li>
+         <a href="/onlineOrderSystem/datasheet/{{datasheet.id}}">{{ datasheet.IDName }}</a> ({{datasheet.orderFormID}})
+       </li>
+     {% endfor %}
+   </ul>
+   {% else %}
+     <p>There are no Data Sheets in the Database.</p>
+   {% endif %}
+
+ {% endblock %}
+

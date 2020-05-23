@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>About the Owner</h1>
+  {% if boss_list %}
+  <ul>
+    {% for boss in boss_list %}
+      <li>
+        <a href="/onlineOrderSystem/boss/{{boss.id}}">{{ boss.name }}</a> ({{boss.tel}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No Information.</p>
+  {% endif %}
+{% endblock %}
+

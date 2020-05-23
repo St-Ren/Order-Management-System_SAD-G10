@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>員工查詢</h1>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for user in filter.qs %}
+    <li>員工ID: {{ user.IDName }} # 電話: {{ user.tel }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

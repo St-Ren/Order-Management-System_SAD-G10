@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>維綸紡織股份有限公司</h1>
+  <!--<p>A website developed by <em>NTU Database G12</em>!</p> -->
+  <!--<h2>Dynamic Content</h2> -->
+  <p>資料庫資料數記錄:</p>
+  <ul>
+    <li><strong>員工:</strong> {{ num_staff }}</li>
+    <li><strong>規格單:</strong> {{ num_datasheet }}</li>
+    <li><strong>訂單:</strong> {{ num_orderform }}</li>
+
+  </ul>
+
+  <p>此頁已被造訪 {{ num_visits }}{% if num_visits == 1 %} 次{% else %} 次{% endif %}。</p>
+
+
+{% endblock %}

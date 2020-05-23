@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Staff List</h1>
+  {% if staff_list %}
+  <ul>
+    {% for staff in staff_list %}
+      <li>
+        <a href="/onlineOrderSystem/staff/{{staff.id}}">
+        {{staff.IDName }}</a> ({{staff.tel}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Staffs in the Database.</p>
+  {% endif %}       
+{% endblock %}
+
