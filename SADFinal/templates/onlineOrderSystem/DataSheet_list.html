@@ -3,16 +3,38 @@
 {% block content %}
    <h1>規格單資料庫</h1>
    {% if datasheet_list %}
+  <br>
+  <table class="col-md-12 score" style="text-align:center">
+	<thead>
+		<tr>
+			<th>datasheet.IDName</th>
+			<th>datasheet.orderFormID</th>
+		</tr>
+	</thead>
+	<tbody>
+  	{% for datasheet in datasheet_list %}
+		<tr>
+			<td  onclick="location.href='/onlineOrderSystem/datasheet/{{datasheet.id}}'">{{ datasheet.IDName }}</td>
+			<td>({{datasheet.orderFormID}})</td>
+		</tr>
+  	{% endfor %}
+ 	 </tbody>
+  </table>
+<!--
    <ul>
      {% for datasheet in datasheet_list %}
        <li>
-         <a href="/onlineOrderSystem/datasheet/{{datasheet.id}}">{{ datasheet.IDName }}</a> ({{datasheet.orderFormID}})
+         <a href="">{{ datasheet.IDName }}</a> ({{datasheet.orderFormID}})
        </li>
      {% endfor %}
-   </ul>
+   </ul> 
+-->
+
    {% else %}
      <p>There are no Data Sheets in the Database.</p>
    {% endif %}
 
  {% endblock %}
+
+
 

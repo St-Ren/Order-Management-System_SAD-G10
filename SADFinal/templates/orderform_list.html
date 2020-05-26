@@ -6,9 +6,22 @@
     {{ filter.form.as_p }}
     <button type="submit">Search</button>
   </form>
-  <ul>
-  {% for user in filter.qs %}
-    <li>訂單ID: {{ user.IDName }} # 廠商: {{ user.firmName }}</li>
+
+  <br><br>
+
+  <table class="col-md-12 score" style="text-align:center">
+	<thead>
+		<tr>
+			<th>訂單ID</th>
+			<th>廠商</th>
+		</tr>
+	</thead>
+	<tbody>
+  	{% for user in filter.qs %}
+	<tr>
+		<td>{{ user.IDName }}</td>
+		<td>{{ user.firmName }}</td>
+	</tr>
   {% endfor %}
-  </ul>
+  </tbody>
 {% endblock %}
