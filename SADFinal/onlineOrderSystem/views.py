@@ -174,9 +174,23 @@ def staff_search(request):
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'user_list.html', {'filter': user_filter})
 
+
+class staff_search_DetailView(generic.DetailView):
+    # model = Staff
+    context_object_name = 'staff_search_detail'
+    template_name = 'onlineOrderSystem/Staff_search_detail.html'
+
+    def get_context_data(self,**kwargs):
+         context = super(staff_search_DetailView, self).get_context_data(**kwargs)
+         context['Staff'] = Staff.objects.all()
+         context['DataSheet'] = DataSheet.objects.all()
+         return context
+
+    def get_queryset(self):
+         return Staff.objects.all()
+
+
 def orderform_search(request):
     user_list = OrderForm.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'orderform_list.html', {'filter': user_filter})
-
-

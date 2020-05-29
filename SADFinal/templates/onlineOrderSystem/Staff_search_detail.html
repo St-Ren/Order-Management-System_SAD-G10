@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ staff_search_detail.IDName }}</h1>
+
+  <p><strong>ID:</strong> {{ staff_search_detail.id }}</p>
+  <p><strong>Name:</strong> {{ staff_search_detail.name }}</p>
+  <p><strong>Tel:</strong> {{ staff_search_detail.tel }}</p>
+  <p><strong>Address:</strong> {{ staff_search_detail.address }}</p>
+  <p><strong>Gender:</strong> {{ staff_search_detail.gender}}</p>
+  <p><strong>Birthday:</strong> {{ staff_search_detail.birthdate }}</p>
+  <p><strong>Account:</strong> {{ staff_search_detail.account }}</p>
+
+  <ul>
+      {% for datasheet in DataSheet %}
+          {% if staff_search_detail.IDName == datasheet.staffID %}
+            <li>
+              <a href="/onlineOrderSystem/datasheet/{{datasheet.id}}">{{ datasheet.IDName }}</a>
+            </li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+{% endblock %}
