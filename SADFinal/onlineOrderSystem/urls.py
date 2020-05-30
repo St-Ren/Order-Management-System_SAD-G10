@@ -28,4 +28,6 @@ urlpatterns = [
 
     path('staff_search/', views.staff_search, name='staff_search'),
     path('staff_search/<int:pk>', views.staff_search_DetailView.as_view(), name='staff_search_detail'),
+
+    path('datasheet_search/', views.datasheet_search, name='datasheet_search'),
 ]

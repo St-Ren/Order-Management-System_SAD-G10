@@ -34,6 +34,7 @@
           <li><a href="{% url 'boss' %}">關於老闆</a></li>
           <li><a href="{% url 'staff_search' %}">查詢員工</a></li>
           <li><a href="{% url 'orderform_search' %}">查詢訂單</a></li>
+          <li><a href="{% url 'datasheet_search' %}">查詢規格單</a></li>
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">登出</a></li>

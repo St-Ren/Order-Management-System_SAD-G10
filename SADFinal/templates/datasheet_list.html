@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>規格單查詢</h1>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">查詢</button>
+  </form>
+  <ul>
+  {% for user in filter.qs %}
+    <li>規格單ID: {{ user.IDName }} # ID: {{ user.id }}</li>
+    <div>員工ID: {{ user.staffID }} # 訂單ID: {{ user.orderFormID }}</div>
+    <div>進度: {{ user.progress }}</div>
+    <div>布邊1: {{ user.buBien1 }} # 布邊2: {{ user.buBien2 }}</div>
+    <div>布身: {{ user.buSien }} # 機上緯密: {{ user.weiMi }}</div>
+    <div>筘幅: {{ user.koFu }} # 整經長: {{ user.length }}</div>
+    <div>經紗排列: {{ user.arrangement }} # 穿法: {{ user.sewingMethod }}</div>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
