@@ -3,18 +3,17 @@
 {% block content %}
 
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>帳號和密碼不符，請再次輸入。</p>
   {% endif %}
-  
+
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
+      <p>您還未註冊或者無權限，請先註冊或是取得權限。</p>
     {% else %}
-      <p>Please login to see this page.</p>
+      <p>請先登入</p>
     {% endif %}
   {% endif %}
-  
+
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <table>
@@ -30,8 +29,8 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
-  
+
   {# Assumes you setup the password_reset view in your URLconf #}
-  <p style="font-weight:bold"><a href="{% url 'password_reset' %}">Lost password?</a></p>
-  
+  <p><a href="{% url 'password_reset' %}">忘記密碼？</a></p>
+
 {% endblock %}
