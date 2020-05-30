@@ -27,4 +27,5 @@ urlpatterns = [
     path('orderform_search/', views.orderform_search, name='orderform_search'),
 
     path('staff_search/', views.staff_search, name='staff_search'),
+    path('staff_search/<int:pk>', views.staff_search_DetailView.as_view(), name='staff_search_detail'),
 ]

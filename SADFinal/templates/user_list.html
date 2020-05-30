@@ -19,14 +19,10 @@
 	<tbody>
   	{% for user in filter.qs %}
 		<tr>
-			<td>{{ user.IDName }}</td>
+			<td><a href="/onlineOrderSystem/staff_search/{{user.id}}">{{ user.IDName }}</td>
 			<td>{{ user.tel }}</td>
 		</tr>
   	{% endfor %}
  	 </tbody>
   </table>
 {% endblock %}
-
-
-
-
