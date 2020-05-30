@@ -136,7 +136,7 @@ def OrderFormCreateRenew(request, pk):
         else:
             form = RenewForm()
 
-    return render(request, 'onlineOrderSystem/OrderForm_form.html')
+    return render(request, 'onlineOrderSystem/submission_complete.html')
 
 
 class DataSheetUpdate(UpdateView):
@@ -167,7 +167,7 @@ def DataSheetUpdateRenew(request, pk):
     else:
         form = RenewForm()
 
-    return render(request, 'onlineOrderSystem/DataSheet_form.html')
+    return render(request, 'onlineOrderSystem/submission_complete.html')
 
 def staff_search(request):
     user_list = Staff.objects.all()
