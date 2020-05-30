@@ -30,4 +30,6 @@ urlpatterns = [
     path('staff_search/<int:pk>', views.staff_search_DetailView.as_view(), name='staff_search_detail'),
 
     path('datasheet_search/', views.datasheet_search, name='datasheet_search'),
+
+    path('datasheet/<int:pk>/update/', views.DataSheetUpdate.as_view(), name='datasheet_update'),
 ]

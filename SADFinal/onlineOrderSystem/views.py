@@ -199,3 +199,9 @@ def datasheet_search(request):
     user_list = DataSheet.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'datasheet_list.html', {'filter': user_filter})
+
+class DataSheetUpdate(UpdateView):
+    model = DataSheet
+    context_object_name = 'datasheet_update'
+    fields = ['progress']
+    template_name = 'onlineOrderSystem/DataSheet_form.html'
