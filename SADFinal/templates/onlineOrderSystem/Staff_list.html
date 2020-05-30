@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Staff List</h1>
+  <h1>員工資料庫</h1>
   {% if staff_list %}
   <ul>
     {% for staff in staff_list %}
@@ -12,7 +12,7 @@
     {% endfor %}
   </ul>
   {% else %}
-    <p>There are no Staffs in the Database.</p>
+    <p>無員工資料。</p>
   {% endif %}       
 {% endblock %}
 

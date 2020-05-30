@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Order Form List</h1>
+  <h1>訂單資料庫</h1>
 
   <button onclick="location.href='{% url 'orderform_create' %}'">增新訂單</button>
   <br><br>
@@ -15,7 +15,7 @@
     {% endfor %}
   </ul>
   {% else %}
-    <p>There are no Order Forms in the Database.</p>
+    <p>無訂單資料。</p>
   {% endif %}       
 {% endblock %}
 
