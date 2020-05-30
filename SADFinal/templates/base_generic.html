@@ -28,12 +28,12 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li class="sidebar-brand" style="font-size:1.3em;font-weight:bold"><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'staff' %}">All Staffs</a></li>
-          <li><a href="{% url 'datasheet' %}">All Data Sheets</a></li>
-          <li><a href="{% url 'orderform' %}">All Order Forms</a></li>
-          <li><a href="{% url 'boss' %}">About the Owner</a></li>
-          <li><a href="{% url 'staff_search' %}">Search Staff</a></li>
-          <li><a href="{% url 'orderform_search' %}">Search Order Form</a></li>
+          <li><a href="{% url 'staff' %}">員工</a></li>
+          <li><a href="{% url 'datasheet' %}">規格單</a></li>
+          <li><a href="{% url 'orderform' %}">訂單</a></li>
+          <li><a href="{% url 'boss' %}">關於老闆</a></li>
+          <li><a href="{% url 'staff_search' %}">查詢員工</a></li>
+          <li><a href="{% url 'orderform_search' %}">查詢訂單</a></li>
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
