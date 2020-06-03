@@ -7,6 +7,8 @@
     <button type="submit">查詢</button>
   </form>
   <ul>
+	<br><br>
+<!--
   {% for user in filter.qs %}
     <li>規格單ID: {{ user.IDName }} # ID: {{ user.id }}</li>
     <div>員工ID: {{ user.staffID }} # 訂單ID: {{ user.orderFormID }}</div>
@@ -17,5 +19,35 @@
     <div>經紗排列: {{ user.arrangement }} # 穿法: {{ user.sewingMethod }}</div>
   {% endfor %}
   </ul>
-{% endblock %}
+-->
 
+<table style="text-align:center">
+	<thead>
+		<tr>
+			<th>規格單ID</th>	
+			<th>員工ID</th>			<th>所屬訂單ID</th>	
+			<th>進度</th>
+			<th>布邊1</th>			<th>布邊2</th>
+			<th>布身</th>			<th>筘幅</th>
+			<th>整經長</th>			<th>經紗排列</th>
+			<th>穿法</th>
+		</tr>
+	</thead>
+	<tbody>
+  	{% for user in filter.qs %}
+		<tr>
+			<td><a href='/onlineOrderSystem/datasheet/{{user.id}}'>{{ user.IDName }}</td>	
+			<td>{{ user.staffID }}</td>			
+			<td>{{ user.orderFormID }}</td>	
+			<td>{{ user.progress }}</td>
+			<td>{{ user.buBien1 }}</td>			<td>{{ user.buBien2 }}</td>
+			<td>{{ user.buSien }}</td>			<td>{{ user.koFu }}</td>
+			<td>{{ user.length }}</td>			<td>{{ user.arrangement }}</td>
+			<td>{{ user.sewingMethod }}</td>
+		</tr>
+  	{% endfor %}
+ 	 </tbody>
+  </table>
+
+
+{% endblock %}

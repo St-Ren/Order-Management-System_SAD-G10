@@ -3,15 +3,27 @@
 {% block content %}
   <h1>關於老闆</h1>
   {% if boss_list %}
-  <ul>
-    {% for boss in boss_list %}
-      <li>
-        <a href="/onlineOrderSystem/boss/{{boss.id}}">{{ boss.name }}</a> ({{boss.tel}})
-      </li>
-    {% endfor %}
-  </ul>
+  <br>
+  <table class="col-md-12 score" style="text-align:center">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Tel.</th>
+		</tr>
+	</thead>
+	<tbody>
+  	{% for boss in boss_list %}
+	<tr>
+		<td> <a href="/onlineOrderSystem/boss/{{boss.id}}"> {{ boss.name }}</a></td>
+		<td>({{boss.tel}})</td>
+	</tr>
+  {% endfor %}
+  </tbody>
+</table>
   {% else %}
     <p>無資料。</p>
   {% endif %}
 {% endblock %}
+
+
 

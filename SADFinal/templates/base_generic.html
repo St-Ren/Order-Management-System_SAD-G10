@@ -28,13 +28,13 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li class="sidebar-brand" style="font-size:1.3em;font-weight:bold"><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'staff' %}">員工</a></li>
-          <li><a href="{% url 'datasheet' %}">規格單</a></li>
-          <li><a href="{% url 'orderform' %}">訂單</a></li>
-          <li><a href="{% url 'boss' %}">關於老闆</a></li>
-          <li><a href="{% url 'staff_search' %}">查詢員工</a></li>
-          <li><a href="{% url 'orderform_search' %}">查詢訂單</a></li>
-          <li><a href="{% url 'datasheet_search' %}">查詢規格單</a></li>
+          <!--  <li><a href="{% url 'staff' %}">員工</a></li>  -->
+          <li><a href="{% url 'orderform' %}">訂單新增</a></li>
+          <li><a href="{% url 'orderform_search' %}">訂單查詢</a></li>
+          <!--  <li><a href="{% url 'datasheet' %}">規格單進度更新</a></li>   -->
+	  <li><a href="{% url 'datasheet_search' %}">規格單查詢/更新</a></li>
+          <li><a href="{% url 'staff_search' %}">員工查詢</a></li>      
+	  <li><a href="{% url 'boss' %}">關於老闆</a></li>
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">登出</a></li>

@@ -2,9 +2,9 @@
 
 {% block content %}
   <h1>規格單: {{ data_sheet.IDName }}</h1>
-  <button onclick="location.href='{% url 'datasheet_update' data_sheet.pk %}'">更新規格單</button>
+  <button onclick="location.href='{% url 'datasheet_update' data_sheet.pk %}'">更新規格單進度</button>
   <br><br>
-  <p><strong>訂單ID:</strong> {{ data_sheet.orderFormID }}</p>
+  <p><strong>所屬訂單ID:</strong> {{ data_sheet.orderFormID }}</p>
   <p><strong>規格單ID:</strong> {{ data_sheet.id }}</p>
   <p><strong>員工ID:</strong> {{ data_sheet.staffID }}</p>
   <p><strong>進度:</strong> {{ data_sheet.progress }}</p>

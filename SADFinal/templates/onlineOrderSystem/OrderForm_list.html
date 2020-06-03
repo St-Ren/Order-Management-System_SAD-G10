@@ -1,19 +1,29 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>訂單資料庫</h1>
-
+  <h1>訂單新增</h1>
+  <br>
   <button onclick="location.href='{% url 'orderform_create' %}'">增新訂單</button>
-  <br><br>
-
+  <br>
   {% if orderform_list %}
-  <ul>
-    {% for orderform in orderform_list %}
-      <li>
-        <a href="/onlineOrderSystem/orderform/{{orderform.id}}">{{ orderform.IDName }}</a> ({{orderform.firmName}})
-      </li>
-    {% endfor %}
-  </ul>
+	 <br><br>
+	  <table class="col-md-12 score" style="text-align:center">
+		<thead>
+			<tr>
+				<th>訂單ID</th>
+				<th>廠商</th>
+			</tr>
+		</thead>
+		<tbody>
+	  	{% for orderform in orderform_list %}
+		<tr>
+			<td> <a href="/onlineOrderSystem/orderform/{{orderform.id}}">{{ orderform.IDName }}</a> </td>
+			<td>({{orderform.firmName}})</td>
+		</tr>
+	  {% endfor %}
+	  </tbody>
+	</table>
+
   {% else %}
     <p>無訂單資料。</p>
   {% endif %}       
