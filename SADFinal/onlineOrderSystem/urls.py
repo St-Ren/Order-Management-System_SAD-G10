@@ -19,7 +19,7 @@ urlpatterns = [
     ############################################
 
     path('orderform/create/', views.OrderFormCreate.as_view(), name='orderform_create'),
-    path('orderform/create/submission_complete/', views.OrderFormCreateRenew, name='order_form_create_ok'),
+    path('orderform/<int:pk>/create/submission_complete/', views.OrderFormCreateRenew, name='order_form_create_ok'),
 
     path('datasheet/<int:pk>/update/', views.DataSheetUpdate.as_view(), name='datasheet_update'),
     path('datasheet/<int:pk>/update/submission_complete/', views.DataSheetUpdateRenew, name='data_sheet_update_ok'),
