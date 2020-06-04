@@ -20,6 +20,9 @@
 
   {% else %}
       {% if '/accounts/' not in request.path %}
+          <script>
+          alert('請先登入')
+          </script>
           <meta http-equiv="refresh" content="0;url='{% url 'login'%}?next={{request.path}}'" //>
           
       {% else %}
