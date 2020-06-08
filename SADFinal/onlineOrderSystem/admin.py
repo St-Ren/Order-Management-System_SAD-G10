@@ -13,8 +13,8 @@ class DataSheetAdmin(admin.ModelAdmin):
 
 @admin.register(OrderForm)
 class OrderFormAdmin(admin.ModelAdmin):
-    list_display = ('IDName', 'firmName', 'hasReceivedCash', 'hasShipped', 'deadLine', 'dateReceived')
-    fields = ['IDName', 'firmName', 'hasReceivedCash', 'hasShipped', 'deadLine', 'dateReceived']
+    list_display = ('IDName', 'firmName', 'hasReceivedCash', 'hasShipped', 'deadLine', 'dateReceived','dataSheetID')
+    fields = ['IDName', 'firmName', 'hasReceivedCash', 'hasShipped', 'deadLine', 'dateReceived','dataSheetID']
 
 @admin.register(Boss)
 class BossAdmin(admin.ModelAdmin):

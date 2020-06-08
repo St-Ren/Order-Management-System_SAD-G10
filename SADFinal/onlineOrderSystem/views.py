@@ -38,7 +38,7 @@ def index(request):
 class StaffView(generic.ListView):
     model = Staff
     context_object_name = 'staff_list'
-    queryset = Staff.objects.all()[:5]  # Get 5
+    queryset = Staff.objects.all()  # Get 5
     template_name = 'onlineOrderSystem/Staff_list.html'
 
 class StaffDetailView(generic.DetailView):
@@ -53,7 +53,7 @@ class StaffListView(generic.ListView):
 class DataSheetView(generic.ListView):
     model = DataSheet
     context_object_name = 'datasheet_list'
-    queryset = DataSheet.objects.all()[:5]
+    queryset = DataSheet.objects.all()
     template_name = 'onlineOrderSystem/DataSheet_list.html'
 
 class DataSheetDetailView(generic.DetailView):
@@ -68,7 +68,7 @@ class DataSheetListView(generic.ListView):
 class OrderFormView(generic.ListView):
     model = OrderForm
     context_object_name = 'orderform_list'
-    queryset = OrderForm.objects.all()[:5]  # Get 5
+    queryset = OrderForm.objects.all()  # Get 5
     template_name = 'onlineOrderSystem/OrderForm_list.html'
 
 class OrderFormDetailView(generic.DetailView):
@@ -83,7 +83,7 @@ class OrderFormListView(generic.ListView):
 class BossView(generic.ListView):
     model = Boss
     context_object_name = 'boss_list'
-    queryset = Boss.objects.all()[:5]  # Get 5
+    queryset = Boss.objects.all()  # Get 5
     template_name = 'onlineOrderSystem/Boss_list.html'
 
 class BossDetailView(generic.DetailView):
@@ -130,6 +130,45 @@ def OrderFormCreateRenew(request, pk):
             order_form.firmName = form.cleaned_data['renewal_data']
             order_form.dateReceived = form.cleaned_data['renewal_data']
             order_form.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('/onlineOrderSystem/orderform/') )
+        else:
+            form = RenewForm()
+
+    return render(request, 'onlineOrderSystem/submission_complete.html')
+
+class DataSheetCreate(CreateView):
+    model = DataSheet
+    fields = '__all__'
+    context_object_name = 'datasheet_create'
+    template_name = 'onlineOrderSystem/DataSheetCreate_form.html'
+
+def DataSheetCreateRenew(request, pk):
+    data_sheet = get_object_or_404(DataSheet, pk=pk)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = RenewForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            data_sheet.buBien1 = form.cleaned_data['renewal_data']
+            data_sheet.buBien2 = form.cleaned_data['renewal_data']
+            data_sheet.buSien = form.cleaned_data['renewal_data']
+            data_sheet.weiMi = form.cleaned_data['renewal_data']
+            data_sheet.koFu = form.cleaned_data['renewal_data']
+            data_sheet.length = form.cleaned_data['renewal_data']
+            data_sheet.orderFormID = form.cleaned_data['renewal_data']
+            data_sheet.progress = form.cleaned_data['renewal_data']
+            data_sheet.staffID = form.cleaned_data['renewal_data']
+            data_sheet.IDName = form.cleaned_data['renewal_data']
+            data_sheet.arrangement = form.cleaned_data['renewal_data']
+            data_sheet.sewingMethod = form.cleaned_data['renewal_data']
+            data_sheet.save()
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('/onlineOrderSystem/orderform/') )

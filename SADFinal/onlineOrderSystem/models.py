@@ -50,6 +50,7 @@ class OrderForm(models.Model):
     deadLine = models.CharField('期限', max_length=10, help_text='2020/12/12')
     firmName = models.CharField('廠商名字', max_length=20)
     dateReceived = models.CharField('接單日期', max_length=10, help_text='2020/12/12')
+    dataSheetID = models.CharField('規格單', max_length=1000, default='none')
     ...
 
     class Meta:

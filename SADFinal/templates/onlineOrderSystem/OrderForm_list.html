@@ -5,6 +5,9 @@
   <br>
   <button onclick="location.href='{% url 'orderform_create' %}'">增新訂單</button>
   <br>
+  <br>
+  <button onclick="location.href='{% url 'datasheet_create' %}'">增新規格單</button>
+  <br>
   {% if orderform_list %}
 	 <br><br>
 	  <table class="col-md-12 score" style="text-align:center">
@@ -26,6 +29,7 @@
 
   {% else %}
     <p>無訂單資料。</p>
-  {% endif %}       
+  {% endif %}
+
 {% endblock %}
 

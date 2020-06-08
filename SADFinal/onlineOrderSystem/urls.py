@@ -32,4 +32,7 @@ urlpatterns = [
     path('datasheet_search/', views.datasheet_search, name='datasheet_search'),
 
     path('datasheet/<int:pk>/update/', views.DataSheetUpdate.as_view(), name='datasheet_update'),
+
+    path('orderform/createdatasheet/', views.DataSheetCreate.as_view(), name='datasheet_create'),
+    path('orderform/<int:pk>/createdatasheet/submission_complete/', views.DataSheetCreateRenew, name='data_sheet_create_ok'),
 ]
