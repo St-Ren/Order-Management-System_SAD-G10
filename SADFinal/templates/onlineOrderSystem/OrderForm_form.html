@@ -4,11 +4,16 @@
 	<br>
   <button>增新訂單: {{ orderform_create.IDName }}</button>
 
-  <form action="submission_complete/" method="post">
+  <form action="" method="POST">
     {% csrf_token %}
-    <table style='width=100%'>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
+    訂單ID: <input type="text" name="IDName"/><br/>
+    收費: <input type="text" name="hasReceivedCash"/><br/>
+    出貨: <input type="text" name="hasShipped"/><br/>
+    期限: <input type="text" name="deadLine"/><br/>
+    廠商名字: <input type="text" name="firmName"/><br/>
+    接單日期: <input type="text" name="dateReceived"/><br/>
+    規格單: <input type="text" name="dataSheetID"/><br/>
+    <br/>
+    <input type="submit" value="Post"/>
   </form>
 {% endblock %}

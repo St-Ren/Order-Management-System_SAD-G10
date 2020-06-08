@@ -104,79 +104,52 @@ def my_view(request):
 
 ########################### Functions ##############################
 from onlineOrderSystem.forms import RenewForm
+from django.shortcuts import render
 
-class OrderFormCreate(CreateView):
-    model = OrderForm
-    fields = '__all__'
-    context_object_name = 'orderform_create'
-    template_name = 'onlineOrderSystem/OrderForm_form.html'
-
-def OrderFormCreateRenew(request, pk):
-    order_form = get_object_or_404(OrderForm, pk=pk)
-
-    # If this is a POST request then process the Form data
+def OrderFormCreate(request):
     if request.method == 'POST':
+        if request.POST.get('IDName') and request.POST.get('hasReceivedCash') and request.POST.get('hasShipped') and request.POST.get('deadLine') and request.POST.get('firmName') and request.POST.get('dateReceived') and request.POST.get('dataSheetID'):
+            post = OrderForm()
+            post.IDName = request.POST.get('IDName')
+            post.hasReceivedCash = request.POST.get('hasReceivedCash')
+            post.hasShipped = request.POST.get('hasShipped')
+            post.deadLine = request.POST.get('deadLine')
+            post.firmName = request.POST.get('firmName')
+            post.dateReceived = request.POST.get('dateReceived')
+            post.dataSheetID = request.POST.get('dataSheetID')
+            post.save()
 
-        # Create a form instance and populate it with data from the request (binding):
-        form = RenewForm(request.POST)
+            return render(request, 'onlineOrderSystem/OrderForm_form.html')
 
-        # Check if the form is valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            order_form.IDName = form.cleaned_data['renewal_data']
-            order_form.hasReceivedCash = form.cleaned_data['renewal_data']
-            order_form.hasShipped = form.cleaned_data['renewal_data']
-            order_form.deadLine = form.cleaned_data['renewal_data']
-            order_form.firmName = form.cleaned_data['renewal_data']
-            order_form.dateReceived = form.cleaned_data['renewal_data']
-            order_form.save()
+    else:
+        return render(request, 'onlineOrderSystem/OrderForm_form.html')
 
-            # redirect to a new URL:
-            return HttpResponseRedirect(reverse('/onlineOrderSystem/orderform/') )
-        else:
-            form = RenewForm()
 
-    return render(request, 'onlineOrderSystem/submission_complete.html')
-
-class DataSheetCreate(CreateView):
-    model = DataSheet
-    fields = '__all__'
-    context_object_name = 'datasheet_create'
-    template_name = 'onlineOrderSystem/DataSheetCreate_form.html'
-
-def DataSheetCreateRenew(request, pk):
-    data_sheet = get_object_or_404(DataSheet, pk=pk)
-
-    # If this is a POST request then process the Form data
+def DataSheetCreate(request):
     if request.method == 'POST':
+        if request.POST.get('buBien1') and request.POST.get('buBien2') and request.POST.get('buSien') \
+                and request.POST.get('weiMi') and request.POST.get('koFu') and request.POST.get('length') \
+                and request.POST.get('orderFormID') and request.POST.get('progress') and request.POST.get('staffID') \
+                and request.POST.get('IDName') and request.POST.get('arrangement') and request.POST.get('sewingMethod'):
+            post = DataSheet()
+            post.buBien1 = request.POST.get('buBien1')
+            post.buBien2 = request.POST.get('buBien2')
+            post.buSien = request.POST.get('buSien')
+            post.weiMi = request.POST.get('weiMi')
+            post.koFu = request.POST.get('koFu')
+            post.length = request.POST.get('length')
+            post.orderFormID = request.POST.get('orderFormID')
+            post.progress = request.POST.get('progress')
+            post.staffID = request.POST.get('staffID')
+            post.IDName = request.POST.get('IDName')
+            post.arrangement = request.POST.get('arrangement')
+            post.sewingMethod = request.POST.get('sewingMethod')
+            post.save()
 
-        # Create a form instance and populate it with data from the request (binding):
-        form = RenewForm(request.POST)
+            return render(request, 'onlineOrderSystem/DataSheetCreate_form.html')
 
-        # Check if the form is valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            data_sheet.buBien1 = form.cleaned_data['renewal_data']
-            data_sheet.buBien2 = form.cleaned_data['renewal_data']
-            data_sheet.buSien = form.cleaned_data['renewal_data']
-            data_sheet.weiMi = form.cleaned_data['renewal_data']
-            data_sheet.koFu = form.cleaned_data['renewal_data']
-            data_sheet.length = form.cleaned_data['renewal_data']
-            data_sheet.orderFormID = form.cleaned_data['renewal_data']
-            data_sheet.progress = form.cleaned_data['renewal_data']
-            data_sheet.staffID = form.cleaned_data['renewal_data']
-            data_sheet.IDName = form.cleaned_data['renewal_data']
-            data_sheet.arrangement = form.cleaned_data['renewal_data']
-            data_sheet.sewingMethod = form.cleaned_data['renewal_data']
-            data_sheet.save()
-
-            # redirect to a new URL:
-            return HttpResponseRedirect(reverse('/onlineOrderSystem/orderform/') )
-        else:
-            form = RenewForm()
-
-    return render(request, 'onlineOrderSystem/submission_complete.html')
-
+    else:
+        return render(request, 'onlineOrderSystem/DataSheetCreate_form.html')
 
 class DataSheetUpdate(UpdateView):
     model = DataSheet

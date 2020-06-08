@@ -18,8 +18,7 @@ urlpatterns = [
 
     ############################################
 
-    path('orderform/create/', views.OrderFormCreate.as_view(), name='orderform_create'),
-    path('orderform/<int:pk>/create/submission_complete/', views.OrderFormCreateRenew, name='order_form_create_ok'),
+    path('orderform/create/', views.OrderFormCreate, name='orderform_create'),
 
     path('datasheet/<int:pk>/update/', views.DataSheetUpdate.as_view(), name='datasheet_update'),
     path('datasheet/<int:pk>/update/submission_complete/', views.DataSheetUpdateRenew, name='data_sheet_update_ok'),
@@ -33,6 +32,5 @@ urlpatterns = [
 
     path('datasheet/<int:pk>/update/', views.DataSheetUpdate.as_view(), name='datasheet_update'),
 
-    path('orderform/createdatasheet/', views.DataSheetCreate.as_view(), name='datasheet_create'),
-    path('orderform/<int:pk>/createdatasheet/submission_complete/', views.DataSheetCreateRenew, name='data_sheet_create_ok'),
+    path('orderform/createdatasheet/', views.DataSheetCreate, name='datasheet_create'),
 ]

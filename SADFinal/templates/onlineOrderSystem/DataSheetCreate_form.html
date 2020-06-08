@@ -4,11 +4,21 @@
 	<br>
   <button>增新規格單: {{ datasheet_create.IDName }}</button>
 
-  <form action="submission_complete/" method="post">
+  <form action="" method="POST">
     {% csrf_token %}
-    <table style='width=100%'>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
+    規格單ID: <input type="text" name="IDName"/><br/>
+    訂單ID: <input type="text" name="orderFormID"/><br/>
+    員工ID: <input type="text" name="staffID"/><br/>
+    布邊1: <input type="text" name="buBien1"/><br/>
+    布邊2: <input type="text" name="buBien2"/><br/>
+    布身: <input type="text" name="buSien"/><br/>
+    機上緯密: <input type="text" name="weiMi"/><br/>
+    筘幅: <input type="text" name="koFu"/><br/>
+    整經長: <input type="text" name="length"/><br/>
+    進度: <input type="text" name="progress"/><br/>
+    經紗排列: <input type="text" name="arrangement"/><br/>
+    穿法: <input type="text" name="sewingMethod"/><br/>
+    <br/>
+    <input type="submit" value="Post"/>
   </form>
 {% endblock %}
