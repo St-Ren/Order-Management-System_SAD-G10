@@ -7,13 +7,15 @@
   <form action="" method="POST">
     {% csrf_token %}
     訂單ID: <input type="text" name="IDName"/><br/>
-    收費: <input type="text" name="hasReceivedCash"/><br/>
-    出貨: <input type="text" name="hasShipped"/><br/>
-    期限: <input type="text" name="deadLine"/><br/>
+    收費: <input type="text" name="hasReceivedCash" placeholder="0/1"/><br/>
+    出貨: <input type="text" name="hasShipped" placeholder="0/1"/><br/>
+    期限: <input type="text" name="deadLine" placeholder="YYYY/MM/DD"/><br/>
     廠商名字: <input type="text" name="firmName"/><br/>
-    接單日期: <input type="text" name="dateReceived"/><br/>
+    接單日期: <input type="text" name="dateReceived" placeholder="YYYY/MM/DD"/><br/>
     規格單: <input type="text" name="dataSheetID"/><br/>
     <br/>
     <input type="submit" value="Post"/>
   </form>
 {% endblock %}
+
+
