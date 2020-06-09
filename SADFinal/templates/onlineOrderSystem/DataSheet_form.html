@@ -3,13 +3,10 @@
 {% block content %}
   <h1>規格單: {{ datasheet_update.IDName }}</h1>
 
-  <form action="submission_complete/" method="post">
+  <form action="" method="POST">
     {% csrf_token %}
-    <table style='width=100%'>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
+      {{ form.as_p }}
+      <input type="submit" value="Edit Post"/>
   </form>
+  <br/><br/>
 {% endblock %}
-
-

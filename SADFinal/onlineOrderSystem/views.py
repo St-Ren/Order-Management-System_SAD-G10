@@ -151,36 +151,6 @@ def DataSheetCreate(request):
     else:
         return render(request, 'onlineOrderSystem/DataSheetCreate_form.html')
 
-class DataSheetUpdate(UpdateView):
-    model = DataSheet
-    context_object_name = 'datasheet_update'
-    fields = ['progress']
-    template_name = 'onlineOrderSystem/DataSheet_form.html'
-
-def DataSheetUpdateRenew(request, pk):
-    data_sheet = get_object_or_404(DataSheet, pk=pk)
-
-    # If this is a POST request then process the Form data
-    if request.method == 'POST':
-
-        # Create a form instance and populate it with data from the request (binding):
-        form = RenewForm(request.POST)
-
-        # Check if the form is valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            data_sheet.progress = form.cleaned_data['renewal_data']
-            data_sheet.save()
-
-            # redirect to a new URL:
-            return HttpResponseRedirect(reverse('/onlineOrderSystem/datasheet/') )
-
-    # If this is a GET (or any other method) create the default form.
-    else:
-        form = RenewForm()
-
-    return render(request, 'onlineOrderSystem/submission_complete.html')
-
 def staff_search(request):
     user_list = Staff.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
@@ -212,8 +182,26 @@ def datasheet_search(request):
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'datasheet_list.html', {'filter': user_filter})
 
-class DataSheetUpdate(UpdateView):
-    model = DataSheet
-    context_object_name = 'datasheet_update'
-    fields = ['progress']
-    template_name = 'onlineOrderSystem/DataSheet_form.html'
+from django.contrib import messages
+
+def DataSheetUpdate(request, pk):
+    obj = get_object_or_404(DataSheet, pk=pk)
+
+    form = RenewForm(request.POST or None, instance=obj)
+    context = {'form': form}
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+
+        obj.save()
+
+        messages.success(request, "成功更新")
+
+        context = {'form': form}
+
+        return render(request, 'onlineOrderSystem/DataSheet_form.html', context)
+
+    else:
+        context = {'form': form,
+                   'error': '更新失敗，請重新嘗試。'}
+        return render(request, 'onlineOrderSystem/DataSheet_form.html', context)
