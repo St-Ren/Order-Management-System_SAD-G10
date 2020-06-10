@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>訂單: {{ orderform_search_detail.IDName }}</h1>
+
+  <p><strong>訂單ID:</strong> {{ orderform_search_detail.id }}</p>
+  <p><strong>廠商名字:</strong> {{ orderform_search_detail.firmName}}</p>
+  <p><strong>收單日期:</strong> {{ orderform_search_detail.dateReceived }}</p>
+  <p><strong>期限:</strong> {{ orderform_search_detail.deadLine }}</p>
+  <p><strong>是否已收費:</strong> {{ orderform_search_detail.hasReceivedCash }}</p>
+  <p><strong>是否已出貨:</strong> {{ orderform_search_detail.hasShipped }}</p>
+  <br>
+  <h5>所屬規格單ID</h5>
+  <ul>
+      {% for datasheet in DataSheet %}
+          {% if datasheet.orderFormID == orderform_search_detail.IDName  %}
+            <li>
+              <a href="/onlineOrderSystem/datasheet/{{datasheet.id}}">{{ datasheet.IDName }}</a>
+            </li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+{% endblock %}
+
+
+
+

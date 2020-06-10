@@ -171,6 +171,19 @@ class staff_search_DetailView(generic.DetailView):
     def get_queryset(self):
          return Staff.objects.all()
 
+class orderform_search_DetailView(generic.DetailView):
+    # model = Staff
+    context_object_name = 'orderform_search_detail'
+    template_name = 'onlineOrderSystem/Orderform_search_detail.html'
+
+    def get_context_data(self,**kwargs):
+         context = super(orderform_search_DetailView, self).get_context_data(**kwargs)
+         context['OrderForm'] = OrderForm.objects.all()
+         context['DataSheet'] = DataSheet.objects.all()
+         return context
+
+    def get_queryset(self):
+         return OrderForm.objects.all()
 
 def orderform_search(request):
     user_list = OrderForm.objects.all()
