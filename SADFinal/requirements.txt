@@ -18,7 +18,7 @@ cloudpickle==1.4.1
 colorama==0.4.1
 conda==4.8.3
 conda-package-handling==1.7.0
-cryptography==2.9.2
+cryptography==3.2
 cv==1.0.0
 cycler==0.10.0
 cytoolz==0.10.1
